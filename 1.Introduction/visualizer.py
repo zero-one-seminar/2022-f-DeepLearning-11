@@ -1,3 +1,10 @@
+"""
+# Visualizer
+- Optimizerのビジュアライザです
+- 特に書かなくてOK！
+- 調整したい人は変更してみてください。
+"""
+
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -49,7 +56,7 @@ class Field:
         }
         return grad
 
-    def plot(self, route=[]):
+    def plot(self, route=[], getfig=False):
         """
         フィールドの状態をプロットする
 
@@ -77,12 +84,21 @@ class Field:
                 
                 # プロット
                 ax.quiver(cx, cy, u, v, angles='xy', scale_units='xy', scale=1, width=0.003)
+            
+        # 画像の保存用
+        if getfig:
+            return fig
+
         
-    def plot_3d(self):
+    def plot_3d(self, getfig=False):
         fig = plt.figure(dpi=100, facecolor="white")
         ax = fig.add_subplot(111, projection="3d")
 
         ax.plot_surface(self.X, self.Y, self.Z, cmap="viridis")
+
+        # 画像の保存用
+        if getfig:
+            return fig
 
 
 ## Adventurer
@@ -97,6 +113,13 @@ class Adventurer:
     def optimize(self, field, method, rep=20):
         """
         与えられた方法で、パラメータの最適化を行う
+
+        ```python
+        for _ in range(rep):
+            grad = field.calc_grad(self.params)    # 勾配の取得
+            method.update(self.params, grad)       # 勾配に基づいてパラメータを更新
+            self.route.append(self.params.copy())  # ルートに記録
+        ```
 
         Args
         ----
