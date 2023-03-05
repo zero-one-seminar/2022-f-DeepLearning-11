@@ -46,7 +46,7 @@ $$
 ![bg right:40%](images/SGD.jpg)
 
 
-## SGDの弱点 (1/2)
+## SGDの弱点
 
 こんな感じのフィールドを考えてみよう
 
@@ -57,10 +57,39 @@ $$
 ![bg right:50%](images/anti_SGD.png)
 
 
-## SGDの弱点 (2/2)
+## SGDの弱点
+
+勾配はこんな感じ
+
+- x軸の勾配→小
+- y軸の勾配→大
+
+<hr>
+
+→どんな動き？
+
+![bg right:65%](images/anti_SGD_field.png)
 
 
+## SGDの弱点
 
-![bg right:40%](images/anti_SGD_field.png)
+こんな動き！
 
-## 
+y軸の勾配が大きいため、無駄な動きをしている
+
+![bg right:65%](images/anti_SGD_move.png)
+
+
+## 試してみよう！
+
+`optimization.ipynb`を使ってビジュアライズします:clap:
+
+- **visualizer.Field**
+  - 勾配を持ったフィールドです
+  - フィールドのプロットもできます
+- **visualizer.Adventurer**
+  - 実際に動く人
+  - たどったルートを記録します
+
+
+## 対策！
