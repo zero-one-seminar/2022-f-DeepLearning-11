@@ -57,21 +57,32 @@ class Field:
         ----
         [route] : list( dict("x": float, "y": float) )
         """
-        fig = plt.figure(figsize=(8, 6))
+        fig = plt.figure(dpi=100, facecolor="white")
         ax = fig.add_subplot(111)
+        ax.set_aspect("equal")
+
         ax.contour(self.X, self.Y, self.Z)
 
-        # ルートを表示
         if len(route) >= 2:
+            # 通過した点をプロット
+            xs = list(map(lambda d: d["x"], route))
+            ys = list(map(lambda d: d["y"], route))
+            ax.scatter(xs, ys, marker="o")
+
+            # ルートを表示
             for cur, nxt in zip(route, route[1:]):
                 cx, cy = cur["x"], cur["y"]
                 nx, ny = nxt["x"], nxt["y"]
                 u, v = nx - cx, ny - cy
                 
                 # プロット
-                ax.quiver(cx, cy, u, v, angles='xy', scale_units='xy', scale=1, width=0.005)
+                ax.quiver(cx, cy, u, v, angles='xy', scale_units='xy', scale=1, width=0.003)
         
-        return fig
+    def plot_3d(self):
+        fig = plt.figure(dpi=100, facecolor="white")
+        ax = fig.add_subplot(111, projection="3d")
+
+        ax.plot_surface(self.X, self.Y, self.Z, cmap="viridis")
 
 
 ## Adventurer

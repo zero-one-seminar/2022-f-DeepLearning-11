@@ -59,6 +59,8 @@ $$
 
 ## SGDの弱点 (2/2)
 
-勾配はこんな感じになります→
+
 
 ![bg right:40%](images/anti_SGD_field.png)
+
+## 
