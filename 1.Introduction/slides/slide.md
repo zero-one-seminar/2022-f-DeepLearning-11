@@ -7,7 +7,7 @@ paginate: true
 ---
 
 <!--
-headingDivider: 1
+headingDivider: 2
 _class: title
 _paginate: false
 -->
@@ -16,7 +16,7 @@ _paginate: false
 
 <a style="color:white; text-decoration: none;" href="https://github.com/kentakom1213">ぱうえる（けんた）:link:</a>
 
-# パラメータとは
+## パラメータとは
 
 - 結果に影響を与える変数のこと
 - ニューラルネットワークには、膨大な数のパラメータが存在する
@@ -26,13 +26,13 @@ _paginate: false
 <hr>
 これらをどのように修正していけば、損失関数の値を最小にできる？
 
-# パラメータの最適化
+## パラメータの最適化
 - 頂上に辿り着くため、あなたはどこに向かうべき？
 
 ![w:900](images/adventurer.jpg)
 
 
-# 今までの方法(SGD)
+## 今までの方法(SGD)
 
 確率的勾配降下法
 （Stochastic Gradient Decent）
@@ -46,7 +46,19 @@ $$
 ![bg right:40%](images/SGD.jpg)
 
 
-# SGDの弱点
+## SGDの弱点 (1/2)
 
-![](images/anti_SGD.png)
+こんな感じのフィールドを考えてみよう
 
+$$
+z = \frac{1}{20}x^2 + y^2
+$$
+
+![bg right:50%](images/anti_SGD.png)
+
+
+## SGDの弱点 (2/2)
+
+勾配はこんな感じになります→
+
+![bg right:40%](images/anti_SGD_field.png)
