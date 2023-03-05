@@ -2,6 +2,7 @@
 marp: true
 header: ""
 footer: "2023/03/04 ゼロイチゼミ <a href=\"https://twitter.com/nu_zero_one\" style=\"color:white\">@nu_zero_one</a>"
+# theme: 01dracula
 theme: 01dracula
 paginate: true
 ---
@@ -16,6 +17,7 @@ _paginate: false
 
 <a style="color:white; text-decoration: none;" href="https://github.com/kentakom1213">ぱうえる（けんた）:link:</a>
 
+
 ## パラメータとは
 
 - 結果に影響を与える変数のこと
@@ -25,6 +27,7 @@ _paginate: false
 
 <hr>
 これらをどのように修正していけば、損失関数の値を最小にできる？
+
 
 ## パラメータの最適化
 - 頂上に辿り着くため、あなたはどこに向かうべき？
@@ -92,4 +95,40 @@ y軸の勾配が大きいため、無駄な動きをしている
   - たどったルートを記録します
 
 
-## 対策！
+## ビジュアライザの使い方
+
+```python
+from visualizer import Field, Adventurer
+
+def f(x, y):
+    return x^2 + y^2
+
+field = Field(f, (-1, 1), (-1, 1))  # フィールド
+adventurer = Adventurer(-0.5, 0.2)  # 冒険者（スタート地点を設定）
+
+adventurer.optimize(field, method)  # adventurerに冒険をさせます（methodは最適化手法:SGDなど）
+route = adventurer.route            # ルートが記録される
+
+field.plot(route=route)             # どんなルートを辿ったか見られます
+```
+
+
+## SGDの実装
+
+```python
+class SGD:
+    def __init__(self, lr=0.1):
+        self.lr = lr
+
+    def update(self, params, grads):
+        # ここを考えよう！
+```
+
+↓ヒント
+```python
+params = {
+    "x": -0.5,  # x座標
+    "y": 0.2,   # y座標
+}
+```
+
