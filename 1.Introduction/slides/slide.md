@@ -132,3 +132,27 @@ params = {
 }
 ```
 
+## 新たな手法 "Momentum"
+
+- "運動量"を表す言葉
+- その名の通り、坂を転がり落ちていくような動き
+
+### 計算式
+
+$$
+\begin{align}
+\begin{array}{cll}
+v &\leftarrow \alpha v - \eta \frac{\partial L}{\partial W} \quad&\cdots~(\text{速度の更新})\\
+W &\leftarrow W + v \quad&\cdots~(\text{パラメータの更新})
+\end{array}
+\end{align}
+$$
+
+## Momentumの動き
+
+グネグネ動く
+↓
+無駄な動きが
+発生しにくい！
+
+![bg right:65%](images/momentum.png)
